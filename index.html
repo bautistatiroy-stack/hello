@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Barangay Water Monitoring | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">💧</div>
+            <div>
+                <h2>Water Monitor</h2>
+                <small>ADMIN PANEL</small>
+            </div>
+        </div>
+
+        <div class="menu-title">MAIN MENU</div>
+
+        <a href="river.html" class="menu-item">
+            <span>▤</span> River History
+        </a>
+
+        <a href="#dashboard" class="menu-item ">
+            <span>▦</span> Dashboard
+        </a>
+
+        <a href="#sensors" class="menu-item">
+            <span>◉</span> Water Sensors
+        </a>
+
+        <a href="#history" class="menu-item">
+            <span>▤</span> Monitoring History
+        </a>
+
+        <div class="sidebar-bottom">
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <small>System Admin</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p>Barangay Water Level Monitoring System</p>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="connection">
+                    <span class="online-dot"></span>
+                    <span id="connectionText">Connecting...</span>
+                </div>
+
+                <button class="refresh-btn" id="refreshButton">
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <section id="dashboard" class="dashboard-content">
+
+            <div class="welcome">
+                <div>
+                    <h2>Welcome, Administrator!</h2>
+                    <p>Here's the latest water monitoring information.</p>
+                </div>
+
+                <div class="current-date" id="currentDate"></div>
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+
+            <div class="summary-grid">
+
+                <div class="summary-card">
+                    <div class="summary-icon blue">▤</div>
+                    <div>
+                        <p>Total Records</p>
+                        <h2 id="totalRecords">0</h2>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon green">✓</div>
+                    <div>
+                        <p>Current Status</p>
+                        <h2 id="currentStatus">--</h2>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon orange">◉</div>
+                    <div>
+                        <p>Active Sensors</p>
+                        <h2 id="activeSensors">0 / 3</h2>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="summary-icon purple">◷</div>
+                    <div>
+                        <p>Last Monitoring</p>
+                        <h2 id="lastMonitoring">--</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- SENSOR SECTION -->
+
+            <section class="panel" id="sensors">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Barangay Water Level Sensors</h3>
+                        <p>Real-time sensor monitoring</p>
+                    </div>
+
+                    <span class="live-badge">
+                        <span class="live-dot"></span>
+                        LIVE
+                    </span>
+                </div>
+
+                <div class="sensor-grid">
+
+                    <div class="sensor-card" id="sensorBox1">
+                        <div class="sensor-number">01</div>
+                        <h4>Level 1</h4>
+                        <div class="sensor-value" id="level1">--</div>
+                        <p id="sensorStatus1">Waiting...</p>
+                    </div>
+
+                    <div class="sensor-card" id="sensorBox2">
+                        <div class="sensor-number">02</div>
+                        <h4>Level 2</h4>
+                        <div class="sensor-value" id="level2">--</div>
+                        <p id="sensorStatus2">Waiting...</p>
+                    </div>
+
+                    <div class="sensor-card" id="sensorBox3">
+                        <div class="sensor-number">03</div>
+                        <h4>Level 3</h4>
+                        <div class="sensor-value" id="level3">--</div>
+                        <p id="sensorStatus3">Waiting...</p>
+                    </div>
+
+                    </div>
+
+            </section>
+
+
+            <!-- HISTORY SECTION -->
+
+            <section class="panel" id="history">
+
+                <div class="panel-header">
+                    <div>
+                        <h3>Monitoring History</h3>
+                        <p>Barangay water level monitoring history</p>
+                    </div>
+
+                    <span id="recordCount">0 Records</span>
+                </div>
+
+                <div class="filter-container">
+
+                    <div class="filter-group">
+                        <label for="dateFilter">Filter by Date</label>
+                        <input type="date" id="dateFilter">
+                    </div>
+
+                    <div class="filter-group search-group">
+                        <label for="searchInput">Search Records</label>
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search status or date..."
+                        >
+                    </div>
+
+                    <button id="clearFilters" class="clear-btn">
+                        Clear Filters
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Level 1</th>
+                                <th>Level 2</th>
+                                <th>Level 3</th>
+                                <th>Status</th>
+                                <th>Test</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="historyTable">
+
+                            <tr>
+                                <td colspan="6" class="empty">
+                                    Loading monitoring records...
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="table-footer">
+                    <span id="showingRecords">Showing 0 records</span>
+                    <span>Updated: <strong id="lastUpdated">--</strong></span>
+                </div>
+
+            </section>
+
+
+            <footer>
+                Barangay Water Level Monitoring System © 2026
+            </footer>
+
+        </section>
+
+    </main>
+
+    
+
+    <script src="barangay.js" defer></script>
+</body>
+</html>
